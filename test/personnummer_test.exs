@@ -42,9 +42,15 @@ defmodule PersonnummerTest do
 
   test "test age" do
     now = DateTime.utc_now()
+    {_, x0} = Date.new(now.year - 20, now.month, now.day)
     {_, x1} = Date.new(now.year - 20, now.month, now.day + 1)
     {_, x2} = Date.new(now.year - 20, now.month, now.day - 1)
     {_, x3} = Date.new(now.year - 100, 1, 1)
+
+    twenty_today =
+      x0
+      |> TestHelper.padded_date
+      |> TestHelper.with_fake_serial
 
     twenty_tomorrow =
       x1
@@ -62,6 +68,7 @@ defmodule PersonnummerTest do
       |> TestHelper.with_fake_serial
 
     %{
+      "#{twenty_today}": 20,
       "#{twenty_tomorrow}": 19,
       "#{twenty_yesterday}": 20,
       "#{one_hundred}": 100,

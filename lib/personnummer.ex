@@ -156,7 +156,7 @@ defmodule Personnummer do
     now = DateTime.utc_now()
     years_since_born = now.year - pnr.date.year
 
-    if pnr.date.month >= now.month && pnr.date.day >= now.day do
+    if pnr.date.month >= now.month && pnr.date.day > now.day do
       years_since_born - 1
     else
       years_since_born
