@@ -29,7 +29,7 @@ true
 iex(3)> gender = if Personnummer.is_female?(pnr) do "female" else "male" end
 "male"
 iex(4)> IO.puts "The person with social security number #{Personnummer.format(pnr)} is a #{gender} of age #{Personnummer.get_age(pnr)}"
-The person with social security number 900101-17 is a male of age 30
+The person with social security number 900101-0017 is a male of age 30
 :ok
 ```
 
@@ -41,7 +41,7 @@ by adding `personnummer` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:personnummer, "~> 0.1.0"}
+    {:personnummer, "~> 3.0.0"}
   ]
 end
 ```

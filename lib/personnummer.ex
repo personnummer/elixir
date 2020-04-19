@@ -26,6 +26,12 @@ defmodule Personnummer do
       iex> {_, p} = Personnummer.new("199001011234")
       iex> Personnummer.format(p)
       "900101-1234"
+      iex> {_, p} = Personnummer.new("199001010001")
+      iex> Personnummer.format(p)
+      "900101-0001"
+      iex> {_, p} = Personnummer.new("199001610001")
+      iex> Personnummer.format(p)
+      "900161-0001"
 
   """
   def format(pnr) do
@@ -61,7 +67,12 @@ defmodule Personnummer do
       |> Integer.to_string()
       |> String.pad_leading(2, "0")
 
-    "#{pnr.date.year}#{month}#{day}-#{pnr.serial}#{pnr.control}"
+    serial =
+      pnr.serial
+      |> Integer.to_string()
+      |> String.pad_leading(3, "0")
+
+    "#{pnr.date.year}#{month}#{day}-#{serial}#{pnr.control}"
   end
 
   @doc """
