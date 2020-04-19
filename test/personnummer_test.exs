@@ -49,31 +49,31 @@ defmodule PersonnummerTest do
 
     twenty_today =
       x0
-      |> TestHelper.padded_date
-      |> TestHelper.with_fake_serial
+      |> TestHelper.padded_date()
+      |> TestHelper.with_fake_serial()
 
     twenty_tomorrow =
       x1
-      |> TestHelper.padded_date
-      |> TestHelper.with_fake_serial
+      |> TestHelper.padded_date()
+      |> TestHelper.with_fake_serial()
 
     twenty_yesterday =
       x2
-      |> TestHelper.padded_date
-      |> TestHelper.with_fake_serial
+      |> TestHelper.padded_date()
+      |> TestHelper.with_fake_serial()
 
     one_hundred =
       x3
-      |> TestHelper.padded_date
-      |> TestHelper.with_fake_serial
+      |> TestHelper.padded_date()
+      |> TestHelper.with_fake_serial()
 
     %{
       "#{twenty_today}": 20,
       "#{twenty_tomorrow}": 19,
       "#{twenty_yesterday}": 20,
-      "#{one_hundred}": 100,
+      "#{one_hundred}": 100
     }
-    |> Enum.each(fn ({pnr, age}) ->
+    |> Enum.each(fn {pnr, age} ->
       {result, p} = Personnummer.new(Atom.to_string(pnr))
 
       assert result == :ok
@@ -88,10 +88,9 @@ defmodule PersonnummerTest do
       "19900101-0017": false,
       "800101-3294": false,
       "000903-6609": true,
-      "800101+3294": false,
+      "800101+3294": false
     }
-    |> Enum.each(fn ({pnr, is_female}) ->
-
+    |> Enum.each(fn {pnr, is_female} ->
       {result, p} = Personnummer.new(Atom.to_string(pnr))
 
       assert result == :ok
@@ -105,10 +104,9 @@ defmodule PersonnummerTest do
     %{
       "800161-3294": true,
       "800101-3294": false,
-      "640327-3813": false,
+      "640327-3813": false
     }
-    |> Enum.each(fn ({pnr, is_coordination}) ->
-
+    |> Enum.each(fn {pnr, is_coordination} ->
       {result, p} = Personnummer.new(Atom.to_string(pnr))
 
       assert result == :ok

@@ -9,14 +9,13 @@ defmodule Personnummer do
     matches =
       Regex.run(~r/^(\d{2}){0,1}(\d{2})(\d{2})(\d{2})([-|+]{0,1})(\d{3})(\d{0,1})$/, pnr_string)
 
-    if Kernel.is_nil(matches) or (matches |> length) < 7 do
+    if is_nil(matches) or matches |> length < 7 do
       {:error, nil}
     else
       matches
       |> from_matches
     end
   end
-
 
   @doc """
   Formats a social security number in short format.
@@ -241,13 +240,14 @@ defmodule Personnummer do
     if date_result == :error do
       {:error, nil}
     else
-      {:ok, %Personnummer{
-        date: date,
-        serial: matched_map.serial,
-        control: matched_map.control,
-        separator: matched_map.separator,
-        coordination: is_coordination
-      }}
+      {:ok,
+       %Personnummer{
+         date: date,
+         serial: matched_map.serial,
+         control: matched_map.control,
+         separator: matched_map.separator,
+         coordination: is_coordination
+       }}
     end
   end
 
