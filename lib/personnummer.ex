@@ -1,6 +1,6 @@
 defmodule Personnummer do
   @moduledoc """
-  Documentation for `Personnummer`.
+  Validate Swedish social security numbers `Personnummer`.
   """
 
   defstruct [:date, :serial, :control, :separator, :coordination]
@@ -257,35 +257,38 @@ defmodule Personnummer do
     |> elem(0)
   end
 
-  def luhn_checksum(digits) do
-    checksum =
-      10 -
-        (digits
-         |> String.split("", trim: true)
-         |> Enum.map(&String.to_integer/1)
-         |> Enum.with_index()
-         |> List.foldl(0, fn x, acc ->
-           {digit, i} = x
+  defp luhn_checksum(digits) do
+    (10 -
+       (digits
+        |> String.split("", trim: true)
+        |> Enum.map(&String.to_integer/1)
+        |> Enum.with_index()
+        |> List.foldl(0, fn {digit, i}, acc -> acc + digit_to_add(i, digit) end)
+        |> rem(10)))
+    |> checksum
+  end
 
-           digit =
-             if rem(i, 2) == 0 do
-               if digit * 2 > 9 do
-                 digit * 2 - 9
-               else
-                 digit * 2
-               end
-             else
-               digit
-             end
+  defp checksum(c) do
+    case c do
+      10 -> 0
+      _ -> c
+    end
+  end
 
-           acc + digit
-         end)
-         |> rem(10))
-
-    if checksum == 10 do
-      0
+  defp digit_to_add(i, digit) do
+    if rem(i, 2) == 0 do
+      (digit * 2)
+      |> double_digit
     else
-      checksum
+      digit
+    end
+  end
+
+  defp double_digit(digit) do
+    if digit > 9 do
+      digit - 9
+    else
+      digit
     end
   end
 end
