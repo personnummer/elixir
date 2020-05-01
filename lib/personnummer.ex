@@ -1,6 +1,6 @@
 defmodule Personnummer do
   @moduledoc """
-  Validate Swedish social security numbers `Personnummer`.
+  Validate Swedish personal identity numbers `Personnummer`.
   """
 
   defstruct [:date, :serial, :control, :separator, :coordination]
@@ -18,7 +18,7 @@ defmodule Personnummer do
   end
 
   @doc """
-  Formats a social security number in short format.
+  Formats a personal identity number in short format.
 
   ## Examples
 
@@ -39,7 +39,7 @@ defmodule Personnummer do
   end
 
   @doc """
-  Formats a social security number in long format.
+  Formats a personal identity number in long format.
 
   ## Examples
 
@@ -75,7 +75,7 @@ defmodule Personnummer do
   end
 
   @doc """
-  Checks if the social security number is valid. Requres a valid date and a
+  Checks if the personal identity number is valid. Requres a valid date and a
   valid last four digits.
 
   ## Examples
@@ -90,7 +90,7 @@ defmodule Personnummer do
   end
 
   @doc """
-  Checks if the social security number is valid. Requres a valid date and a
+  Checks if the personal identity number is valid. Requres a valid date and a
   valid last four digits.
 
   ## Examples
@@ -117,8 +117,8 @@ defmodule Personnummer do
   end
 
   @doc """
-  Quick validation function to just validate a social security number from a
-  string without preserving the struct with the social security number data. def
+  Quick validation function to just validate a personal identity number from a
+  string without preserving the struct with the personal identity number data.
 
   ## Examples
     iex> Personnummer.valid?("19900101-0017")
@@ -139,7 +139,7 @@ defmodule Personnummer do
   end
 
   @doc ~S"""
-  Get the age of the person holding the social security number.
+  Get the age of the person holding the personal identity number.
 
   ## Examples
 
@@ -163,7 +163,7 @@ defmodule Personnummer do
   end
 
   @doc """
-  Returns true if the person behind the social security number is a female.
+  Returns true if the person behind the personal identity number is a female.
 
   ## Examples
 
@@ -179,7 +179,7 @@ defmodule Personnummer do
   end
 
   @doc """
-  Returns true if the person behind the social security number is a male.
+  Returns true if the person behind the personal identity number is a male.
 
   ## Examples
 
@@ -193,7 +193,7 @@ defmodule Personnummer do
   end
 
   @doc """
-  Returns true if the parsed social security number is a coordination number.
+  Returns true if the parsed personal identity number is a coordination number.
 
   ## Examples
 
