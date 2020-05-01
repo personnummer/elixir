@@ -23,7 +23,7 @@ defmodule PersonnummerTest do
     end)
   end
 
-  test "test valid social security number" do
+  test "test valid personal identity number" do
     [
       "19900101-0017",
       "196408233234",

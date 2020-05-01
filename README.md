@@ -1,6 +1,7 @@
 # Personnummer
 
-Validate Swedish social security numbers with
+Validate Swedish [personal identity
+numbers](https://en.wikipedia.org/wiki/Personal_identity_number_(Sweden)) with
 [Elixir](https://elixir-lang.org/).
 
 ## Usage
@@ -28,8 +29,8 @@ iex(2)> Personnummer.valid?(pnr)
 true
 iex(3)> gender = if Personnummer.is_female?(pnr) do "female" else "male" end
 "male"
-iex(4)> IO.puts "The person with social security number #{Personnummer.format(pnr)} is a #{gender} of age #{Personnummer.get_age(pnr)}"
-The person with social security number 900101-0017 is a male of age 30
+iex(4)> IO.puts "The person with personal identity number #{Personnummer.format(pnr)} is a #{gender} of age #{Personnummer.get_age(pnr)}"
+The person with personal identity number 900101-0017 is a male of age 30
 :ok
 ```
 
