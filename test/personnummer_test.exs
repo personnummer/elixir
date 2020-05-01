@@ -43,8 +43,21 @@ defmodule PersonnummerTest do
   test "test age" do
     now = DateTime.utc_now()
     {_, x0} = Date.new(now.year - 20, now.month, now.day)
-    {_, x1} = Date.new(now.year - 20, now.month, now.day + 1)
-    {_, x2} = Date.new(now.year - 20, now.month, now.day - 1)
+
+    {_, x1} =
+      if now.month == 12 do
+        Date.new(now.year - 19, 1, 1)
+      else
+        Date.new(now.year - 20, now.month + 1, 1)
+      end
+
+    {_, x2} =
+      if now.month == 1 do
+        Date.new(now.year - 21, 12, 1)
+      else
+        Date.new(now.year - 20, now.month - 1, 1)
+      end
+
     {_, x3} = Date.new(now.year - 100, 1, 1)
 
     twenty_today =
