@@ -113,7 +113,7 @@ defmodule Personnummer do
       |> Integer.to_string()
       |> String.pad_leading(3, "0")
 
-    luhn_checksum("#{short_date}#{serial}") == pnr.control
+    pnr.serial > 0 && luhn_checksum("#{short_date}#{serial}") == pnr.control
   end
 
   @doc """
