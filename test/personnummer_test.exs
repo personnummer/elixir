@@ -13,7 +13,7 @@ defmodule PersonnummerTest do
   end
 
   test "test_invalid luhn" do
-    ["19900101-1111", "20160229-1111", "6403273814"]
+    ["19900101-1111", "20160229-1111", "6403273814", "20150916-0006"]
     |> Enum.each(fn tc ->
       {result, p} = Personnummer.new(tc)
 
