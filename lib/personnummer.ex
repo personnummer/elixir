@@ -7,7 +7,7 @@ defmodule Personnummer do
 
   def new(pnr_string) do
     matches =
-      Regex.run(~r/^(\d{2}){0,1}(\d{2})(\d{2})(\d{2})([-|+]{0,1})(\d{3})(\d{0,1})$/, pnr_string)
+      Regex.run(~r/^(\d{2}){0,1}(\d{2})(\d{2})(\d{2})([-+]{0,1})(\d{3})(\d{0,1})$/, pnr_string)
 
     if is_nil(matches) or matches |> length < 7 do
       {:error, nil}
