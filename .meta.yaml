@@ -1,0 +1,4 @@
+name: "Elixir"
+maintainer: "@bombsimon"
+spec: 3.0
+workflow: "elixir.yml"
