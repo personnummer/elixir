@@ -10,7 +10,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +18,7 @@ jobs:
         uses: erlef/setup-beam@v1
         with:
           elixir-version: v1.20.4
-          otp-version: 25
+          otp-version: 29
       - name: Install Dependencies
         run: mix deps.get
       - name: Run Tests
