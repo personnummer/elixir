@@ -54,3 +54,7 @@ be found at [https://hexdocs.pm/personnummer](https://hexdocs.pm/personnummer).
 ## Testing
 
 Use `mix test` to run doctests and unit tests.
+
+## In memoriam
+
+Fredrik "Frozzare" Forsmo (1991-2026) was the initiator, co-founder and a core contributor of the personnummer project. This library carries his work. He is missed.
